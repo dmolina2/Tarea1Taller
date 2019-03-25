@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<h1> <%= @nave['name'] %> </h1>
+<br>
+<h3><strong>Characteristics:</strong></h3>
+<h5>Model: <%= @nave['model'] %></h5>
+<h5>Manufacturer: <%= @nave['manufacturer'] %></h5>
+<h5>Cost in credits: <%= @nave['cost_in_credits'] %></h5>
+<h5>Length: <%= @nave['length'] %></h5>
+<h5>Max Speed: <%= @nave['max_atmosphering_speed'] %></h5>
+<h5>Crew: <%= @nave['crew'] %></h5>
+<h5>Passengers: <%= @nave['passengers'] %></h5>
+<h5>Cargo Capacity: <%= @nave['cargo_capacity'] %></h5>
+<h5>Consumables: <%= @nave['consumables'] %></h5>
+<h5>Hyperdrive Rating: <%= @nave['hyperdrive_rating'] %></h5>
+<h5>Startship Class: <%= @nave['starship_class'] %></h5>
+
+<h5>Pilots:</h5>
+<% @lista_pilotos.each do |pilot| %>
+	<p> <%= pilot['name'] %> </p>
+<% end %>
+<h5>Films where appear:</h5>
+<% @lista_filmss.each do |film| %>
+	<p> <%= film['title'] %> </p>
+<% end %> 
+<br>
+<%= link_to "Return", root_path, class: 'button' %>
+
+
+
+</body>
+</html>
+
+
+
+

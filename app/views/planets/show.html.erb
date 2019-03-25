@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<h1> <%= @planeta['name'] %> </h1>
+<br>
+<h3><strong>Characteristics:</strong></h3>
+<h5>Rotation Period: <%= @planeta['rotation_period'] %></h5>
+<h5>Orbital Period: <%= @planeta['orbital_period'] %></h5>
+<h5>Diameter: <%= @planeta['diameter'] %></h5>
+<h5>Climate: <%= @planeta['climate'] %></h5>
+<h5>Gravity: <%= @planeta['gravity'] %></h5>
+<h5>Terrain: <%= @planeta['terrain'] %></h5>
+<h5>Surface Water: <%= @planeta['surface_water'] %></h5>
+<h5>Population: <%= @planeta['population'] %></h5>
+<h5>Important Residents:</h5>
+<% @lista_residentes.each do |residente| %>
+	<p> <%= residente['name'] %> </p>
+<% end %>
+<h5>Films where appear:</h5>
+<% @lista_films.each do |film| %>
+	<p> <%= film['title'] %> </p>
+<% end %> 
+<br>
+<%= link_to "Return", root_path, class: 'button' %>
+
+
+</body>
+</html>
+
+
+
+

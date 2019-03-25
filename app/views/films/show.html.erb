@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<!--<% @response2.each do |resp| %>
+	<p><%= resp %></p> 
+<% end %> -->
+
+<h1><%= @response2['title']%> (<%= @response2['release_date']%>) </h1>
+<br>
+<h4> Episode number: <%= @response2['episode_id'] %> </h4>
+<br>
+<h4> Director: <%= @response2['director'] %> </h4>
+<br>
+<h4> Producer: <%= @response2['producer'] %> </h4>
+<br>
+<div class="row">
+	<div class="column">
+		<h4><strong> Characters:</strong></h4>
+		<% contador1 = 0 %>
+		<% @lista_personajes.each do |personaje| %>
+			<p> <%= link_to personaje['name'], character_path(:id => @indices_personajes[contador1]) %> </p>
+			<% contador1 = contador1 + 1 %>
+		<% end %>
+	</div>
+	<div class="column">
+		<h4><strong> Planets:</strong></h4>
+		<% contador2 = 0 %>
+		<% @lista_planetas.each do |planeta| %>
+			<p> <%= link_to planeta['name'], planet_path(:id => @indices_planetas[contador2]) %> </p>
+			<% contador2 = contador2 + 1 %>
+		<% end %>
+	</div>
+	<div class="column">
+		<h4><strong> Starships:</strong></h4>
+		<% contador3 = 0 %>
+		<% @lista_naves.each do |nave| %>
+			<p> <%= link_to nave['name'], starship_path(:id => @indices_naves[contador3]) %> </p>
+			<% contador3 = contador3 + 1 %>
+		<% end %>
+	</div>
+</div>
+<br>
+<%= link_to "Return", root_path, class: 'button' %>
+<!--	
+<p> <%= @indices_personajes %> </p>
+<p> <%= @indices_naves %> </p>
+<p> <%= @indices_planetas %> </p> -->
+</body>
+</html>
+
+
+
+

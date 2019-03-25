@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<h1> <%= @personaje['name'] %> </h1>
+<br>
+<h3><strong>Characteristics:</strong></h3>
+<h5>Height: <%= @personaje['height'] %></h5>
+<h5>Mass: <%= @personaje['mass'] %></h5>
+<h5>Skin Color: <%= @personaje['skin_color'] %></h5>
+<h5>Eye Color: <%= @personaje['eye_color'] %></h5>
+<h5>Birth Year: <%= @personaje['birth_year'] %></h5>
+<h5>Gender: <%= @personaje['gender'] %></h5>
+<h5>Homeworld: <%= @procedencia['name'] %></h5>
+<h5>Films where appear:</h5>
+<% @lista_peliculas.each do |pelicula| %>
+	<p> <%= pelicula['title'] %> </p>
+<% end %>
+<h5>Starships where is crew:</h5>
+<% @lista_navess.each do |nave| %>
+	<p> <%= nave['name'] %> </p>
+<% end %>
+<br>
+<%= link_to "Return", root_path, class: 'button' %>
+
+
+</body>
+</html>
+
+
+
+

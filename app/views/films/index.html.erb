@@ -1,0 +1,34 @@
+<h1> A Start Wars Encyclopedia </h1>
+</br>
+</br>
+<h3>Films:</h3>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Year</th>
+			<th>Director</th>
+			<th>Producer</th>
+			<th>Episode Number</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @response.each do |resp| %>
+			<% if resp[0] == 'results' %>
+				<% resp[1].each do |resp1| %>
+				<tr>
+				<td><%= resp1['title'] %></td>
+				<td><%= resp1['release_date'] %></td>
+				<td><%= resp1['director'] %></td>
+				<td><%= resp1['producer'] %></td>
+				<td><%= resp1['episode_id'] %></td>
+				<td><%= link_to 'More information', film_path(:id => resp1['episode_id']) %></td>
+				</tr>
+				<tr>
+					<br>
+				</tr>
+				<% end %>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
