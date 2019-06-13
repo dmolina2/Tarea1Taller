@@ -14,7 +14,7 @@ class CharactersController < ApplicationController
 	  Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
 	 end
 
-	PersonQuery = SWAPI::Client.parse <<-'GRAPHQL'
+	CharacterQuery = SWAPI::Client.parse <<-'GRAPHQL'
 	  query($id: ID!) {
 	   	person(id: $id) {
 	   	 id
@@ -47,7 +47,7 @@ class CharactersController < ApplicationController
 	GRAPHQL
 
 	def show
-		@response3 = SWAPI::Client.query(PersonQuery, variables: { id: params[:id] })
+		@response3 = SWAPI::Client.query(CharacterQuery, variables: { id: params[:id] })
 	end
 
 end
