@@ -1,3 +1,7 @@
+require 'json'
+require "graphql/client"
+require "graphql/client/http"
+
 class PlanetsController < ApplicationController
 	# Star Wars API example wrapper
 	module SWAPI
