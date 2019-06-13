@@ -1,20 +1,49 @@
 class CharactersController < ApplicationController
+	# Star Wars API example wrapper
+	module SWAPI
+	  # Configure GraphQL endpoint using the basic HTTP network adapter.
+	  HTTP = GraphQL::Client::HTTP.new("https://swapi-graphql-integracion-t3.herokuapp.com/")
+	  
+	  # Fetch latest schema on init, this will make a network request
+	  Schema = GraphQL::Client.load_schema(HTTP)
+
+	  Client = GraphQL::Client.new(schema: Schema, execute: HTTP)
+	 end
+
+	PersonQuery = SWAPI::Client.parse <<-'GRAPHQL'
+	  query($id: ID!) {
+	   	person(id: $id) {
+	   	 id
+	     name
+	     height
+	     birthYear
+	     hairColor
+	     eyeColor
+	     skinColor
+	     gender
+	     mass
+	     homeworld{
+	     	id
+	     	name
+	     }
+	     starshipConnection{
+	     	starships{
+	     		id
+	     		name
+	     	}
+	     }
+	     filmConnection{
+	     	films{
+	     		id
+	     		title
+	     	}
+	     }
+	   	}
+  	  }
+	GRAPHQL
+
 	def show
-		@aux1 = params[:id]
-		@personaje = HTTParty.get('https://swapi.co/api/people/' + @aux1 + '/', :headers => {'Content-Type' => 'application/json'})
-		@procedencia = HTTParty.get(@personaje['homeworld'], :headers => {'Content-Type' => 'application/json'})
-		@cantidad_peliculas = @personaje['films'].length - 1
-		@lista_peliculas = []
-	    for i in 0..@cantidad_peliculas do 	 	
-	    	@pelicula = HTTParty.get(@personaje['films'][i], :headers => {'Content-Type' => 'application/json'})
-	 		@lista_peliculas.push(@pelicula)
-	 	end
-	 	@cantidad_navess = @personaje['starships'].length - 1
-	 	@lista_navess = []
-	    for i in 0..@cantidad_navess do 	 	
-	    	@nave = HTTParty.get(@personaje['starships'][i], :headers => {'Content-Type' => 'application/json'})
-	 		@lista_navess.push(@nave)
-		end
+		@response3 = SWAPI::Client.query(PersonQuery, variables: { id: params[:id] })
 	end
 
 end

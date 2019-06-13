@@ -20,28 +20,29 @@
 </head>
 <body>
 
-<h1> <%= @nave['name'] %> </h1>
+<h1> <%= @response3.data.starship.name %> </h1>
 <br>
 <h3><strong>Characteristics:</strong></h3>
-<h5>Model: <%= @nave['model'] %></h5>
-<h5>Manufacturer: <%= @nave['manufacturer'] %></h5>
-<h5>Cost in credits: <%= @nave['cost_in_credits'] %></h5>
-<h5>Length: <%= @nave['length'] %></h5>
-<h5>Max Speed: <%= @nave['max_atmosphering_speed'] %></h5>
-<h5>Crew: <%= @nave['crew'] %></h5>
-<h5>Passengers: <%= @nave['passengers'] %></h5>
-<h5>Cargo Capacity: <%= @nave['cargo_capacity'] %></h5>
-<h5>Consumables: <%= @nave['consumables'] %></h5>
-<h5>Hyperdrive Rating: <%= @nave['hyperdrive_rating'] %></h5>
-<h5>Startship Class: <%= @nave['starship_class'] %></h5>
+<h5>Model: <%= @response3.data.starship.model %></h5>
+<h5>Manufacturer: <%= @response3.data.starship.manufacturers %></h5>
+<h5>Cost in credits: <%= @response3.data.starship.cost_in_credits %></h5>
+<h5>Length: <%= @response3.data.starship.length %></h5>
+<h5>Max Speed: <%= @response3.data.starship.max_atmosphering_speed %></h5>
+<h5>Crew: <%= @response3.data.starship.crew %></h5>
+<h5>Passengers: <%= @response3.data.starship.passengers %></h5>
+<h5>Cargo Capacity: <%= @response3.data.starship.cargo_capacity %></h5>
+<h5>Consumables: <%= @response3.data.starship.consumables %></h5>
+<h5>Hyperdrive Rating: <%= @response3.data.starship.hyperdrive_rating %></h5>
+<h5>Startship Class: <%= @response3.data.starship.starship_class %></h5>
 
 <h5>Pilots:</h5>
-<% @lista_pilotos.each do |pilot| %>
-	<p> <%= pilot['name'] %> </p>
+<% @response3.data.starship.pilot_connection.pilots.each do |pilot| %>
+	<p> <%= link_to pilot.name, character_path(:id => pilot.id) %> </p>
 <% end %>
+
 <h5>Films where appear:</h5>
-<% @lista_filmss.each do |film| %>
-	<p> <%= film['title'] %> </p>
+<% @response3.data.starship.film_connection.films.each do |film| %>
+	<p> <%= link_to film.title, film_path(:id => film.id) %> </p>
 <% end %> 
 <br>
 <%= link_to "Return", root_path, class: 'button' %>

@@ -20,24 +20,24 @@
 </head>
 <body>
 
-<h1> <%= @planeta['name'] %> </h1>
+<h1> <%= @response3.data.planet.name %> </h1>
 <br>
 <h3><strong>Characteristics:</strong></h3>
-<h5>Rotation Period: <%= @planeta['rotation_period'] %></h5>
-<h5>Orbital Period: <%= @planeta['orbital_period'] %></h5>
-<h5>Diameter: <%= @planeta['diameter'] %></h5>
-<h5>Climate: <%= @planeta['climate'] %></h5>
-<h5>Gravity: <%= @planeta['gravity'] %></h5>
-<h5>Terrain: <%= @planeta['terrain'] %></h5>
-<h5>Surface Water: <%= @planeta['surface_water'] %></h5>
-<h5>Population: <%= @planeta['population'] %></h5>
+<h5>Rotation Period: <%= @response3.data.planet.rotation_period %></h5>
+<h5>Orbital Period: <%= @response3.data.planet.orbital_period %></h5>
+<h5>Diameter: <%= @response3.data.planet.diameter %></h5>
+<h5>Climate: <%= @response3.data.planet.climates%></h5>
+<h5>Gravity: <%= @response3.data.planet.gravity %></h5>
+<h5>Terrain: <%= @response3.data.planet.terrains %></h5>
+<h5>Surface Water: <%= @response3.data.planet.surface_water %></h5>
+<h5>Population: <%= @response3.data.planet.population %></h5>
 <h5>Important Residents:</h5>
-<% @lista_residentes.each do |residente| %>
-	<p> <%= residente['name'] %> </p>
+<% @response3.data.planet.resident_connection.residents.each do |residente| %>
+	<p> <%= link_to residente.name, character_path(:id => residente.id) %> </p>
 <% end %>
 <h5>Films where appear:</h5>
-<% @lista_films.each do |film| %>
-	<p> <%= film['title'] %> </p>
+<% @response3.data.planet.film_connection.films.each do |film| %>
+	<p> <%= link_to film.title, film_path(:id => film.id) %> </p>
 <% end %> 
 <br>
 <%= link_to "Return", root_path, class: 'button' %>

@@ -20,23 +20,23 @@
 </head>
 <body>
 
-<h1> <%= @personaje['name'] %> </h1>
+<h1> <%= @response3.data.person.name %> </h1>
 <br>
 <h3><strong>Characteristics:</strong></h3>
-<h5>Height: <%= @personaje['height'] %></h5>
-<h5>Mass: <%= @personaje['mass'] %></h5>
-<h5>Skin Color: <%= @personaje['skin_color'] %></h5>
-<h5>Eye Color: <%= @personaje['eye_color'] %></h5>
-<h5>Birth Year: <%= @personaje['birth_year'] %></h5>
-<h5>Gender: <%= @personaje['gender'] %></h5>
-<h5>Homeworld: <%= @procedencia['name'] %></h5>
+<h5>Height: <%= @response3.data.person.height %></h5>
+<h5>Mass: <%= @response3.data.person.mass %></h5>
+<h5>Skin Color: <%= @response3.data.person.skin_color %></h5>
+<h5>Eye Color: <%= @response3.data.person.eye_color %></h5>
+<h5>Birth Year: <%= @response3.data.person.birth_year %></h5>
+<h5>Gender: <%= @response3.data.person.gender%></h5>
+<h5>Homeworld: <%= link_to @response3.data.person.homeworld.name, planet_path(:id => @response3.data.person.homeworld.id )%></h5>
 <h5>Films where appear:</h5>
-<% @lista_peliculas.each do |pelicula| %>
-	<p> <%= pelicula['title'] %> </p>
+<% @response3.data.person.film_connection.films.each do |pelicula| %>
+	<p> <%= link_to pelicula.title, film_path(:id => pelicula.id) %> </p>
 <% end %>
 <h5>Starships where is crew:</h5>
-<% @lista_navess.each do |nave| %>
-	<p> <%= nave['name'] %> </p>
+<% @response3.data.person.starship_connection.starships.each do |nave| %>
+	<p> <%= link_to nave.name, starship_path(:id => nave.id) %> </p>
 <% end %>
 <br>
 <%= link_to "Return", root_path, class: 'button' %>

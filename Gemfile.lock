@@ -73,6 +73,10 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    graphql (1.9.6)
+    graphql-client (0.14.0)
+      activesupport (>= 3.0, < 6.0)
+      graphql (~> 1.6)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -195,6 +199,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  graphql-client
   httparty (~> 0.13.7)
   jbuilder (~> 2.5)
   jquery-rails
@@ -212,4 +217,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.2
+   1.17.3

@@ -20,45 +20,37 @@
 </head>
 <body>
 
-<!--<% @response2.each do |resp| %>
-	<p><%= resp %></p> 
-<% end %> -->
+<h1><%= @response3.data.film.title %> (<%= @response3.data.film.release_date %>) </h1>
+<br>
+<h4> Episode number: <%= @response3.data.film.episode_id %> </h4>
+<br>
+<h4> Director: <%= @response3.data.film.director %> </h4>
+<br>
+<h4> Producer: <%= @response3.data.film.producers %> </h4>
+<br>
 
-<h1><%= @response2['title']%> (<%= @response2['release_date']%>) </h1>
-<br>
-<h4> Episode number: <%= @response2['episode_id'] %> </h4>
-<br>
-<h4> Director: <%= @response2['director'] %> </h4>
-<br>
-<h4> Producer: <%= @response2['producer'] %> </h4>
-<br>
 <div class="row">
 	<div class="column">
 		<h4><strong> Characters:</strong></h4>
-		<% contador1 = 0 %>
-		<% @lista_personajes.each do |personaje| %>
-			<p> <%= link_to personaje['name'], character_path(:id => @indices_personajes[contador1]) %> </p>
-			<% contador1 = contador1 + 1 %>
+		<% @response3.data.film.character_connection.characters.each do |personaje| %>
+			<p> <%= link_to personaje.name, character_path(:id => personaje.id) %> </p>
 		<% end %>
 	</div>
 	<div class="column">
 		<h4><strong> Planets:</strong></h4>
-		<% contador2 = 0 %>
-		<% @lista_planetas.each do |planeta| %>
-			<p> <%= link_to planeta['name'], planet_path(:id => @indices_planetas[contador2]) %> </p>
-			<% contador2 = contador2 + 1 %>
+		<% @response3.data.film.planet_connection.planets.each do |planeta| %>
+			<p> <%= link_to planeta.name, planet_path(:id => planeta.id) %> </p>
 		<% end %>
 	</div>
 	<div class="column">
 		<h4><strong> Starships:</strong></h4>
-		<% contador3 = 0 %>
-		<% @lista_naves.each do |nave| %>
-			<p> <%= link_to nave['name'], starship_path(:id => @indices_naves[contador3]) %> </p>
-			<% contador3 = contador3 + 1 %>
+		<% @response3.data.film.starship_connection.starships.each do |nave| %>
+			<p> <%= link_to nave.name, starship_path(:id => nave.id) %> </p>
 		<% end %>
 	</div>
 </div>
 <br>
+
 <%= link_to "Return", root_path, class: 'button' %>
 <!--	
 <p> <%= @indices_personajes %> </p>

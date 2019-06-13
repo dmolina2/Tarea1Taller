@@ -1,5 +1,7 @@
-<h1> A Star Wars Encyclopedia!! </h1>
-<h3>Films:</h3>
+<h1> A Star Wars Encyclopedia!!!! </h1>
+<h3>Filmss:</h3>
+
+
 <table><thead><tr>
 			<th>Name</th>
 			<th>Year</th>
@@ -8,23 +10,21 @@
 			<th>Episode Number</th>
 		</tr>
 	</thead>
-	<tbody>
-		<% @response.each do |resp| %>
-			<% if resp[0] == 'results' %>
-				<% resp[1].each do |resp1| %>
-				<tr>
-				<td><%= resp1['title'] %></td>
-				<td><%= resp1['release_date'] %></td>
-				<td><%= resp1['director'] %></td>
-				<td><%= resp1['producer'] %></td>
-				<td><%= resp1['episode_id'] %></td>
-				<td><%= link_to 'More information', film_path(:id => resp1['episode_id']) %></td>
-				</tr>
-				<tr>
-					<br>
-				</tr>
-				<% end %>
-			<% end %>
+		<tbody>
+		<% @result1.data.all_films.films.each do |resp2| %>
+			<tr>
+			<<td><%= resp2.title %></td>
+			<td><%= resp2.release_date %></td>
+			<td><%= resp2.director %></td>
+			<td><%= resp2.producers %></td>
+			<td><%= resp2.episode_id %></td>
+			<td><%= link_to 'More information', film_path(:id => resp2.id) %></td>
+			</tr>
+			<tr>
+				<br>
+			</tr>
 		<% end %>
 	</tbody>
+	
+
 </table>
